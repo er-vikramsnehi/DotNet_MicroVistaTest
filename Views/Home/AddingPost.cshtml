@@ -1,0 +1,43 @@
+﻿@model MicroVistaMVC.Models.StudentPostClass
+
+
+@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor 
+
+
+
+
+
+
+
+@using (Html.BeginForm("AddPost", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    <div class="card round white">
+        <div class="container padding">
+
+
+            <div class="mb-3">
+                <h6 class="opacity-10 form-label opacity-80">Add Some New Post. </h6>
+
+                <label for="StudentPostSummary" class="form-label">Write Something</label>
+
+                @Html.TextAreaFor(x => x.StudentPostSummary, new { @class = "form-control" })
+                <br /><span asp-validation-for="StudentPostSummary"></span>
+                @Html.ValidationMessageFor(x => x.StudentPostSummary)
+            </div>
+
+            <div class="mb-3">
+                <label for="StudentPostImage" class="form-label">Upload Post Image </label>
+                @Html.TextBoxFor(model => model.StudentPostImage, new { type = "file", @class = "form-control" })
+                <br /><span asp-validation-for="StudentPostImage"></span>
+                @Html.ValidationMessageFor(model => model.StudentPostImage)
+            </div>
+
+
+            <button type="submit" class="button theme"><i class="fas fa-pencil"></i>  Post</button>
+        </div>
+    </div>
+
+}
+

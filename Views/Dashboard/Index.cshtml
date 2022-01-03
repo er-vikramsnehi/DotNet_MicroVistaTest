@@ -1,0 +1,70 @@
+﻿@model IEnumerable<MicroVistaMVC.Models.StudentClass>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+
+
+<table id="DashboardStudentList" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentMail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentDOB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentPassword)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentImage)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentMail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentDOB)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentPassword)
+                </td>
+                <td>
+                    <img class="card-img img-fluid" src="~/uploads/@Html.DisplayFor(modelItem => item.StudentImage)" alt="Not Uploaded " style="height:50px;width:50px;">
+                </td>
+                <td>
+                   Admin Only ( Crude Operation ) 
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+

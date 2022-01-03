@@ -1,0 +1,33 @@
+﻿@model IEnumerable<MicroVistaMVC.Models.StudentPostClass>
+
+@{
+    ViewData["Title"] = "ViewPost";
+}
+
+<h1>ViewPost</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+
+
+
+
+
+@foreach (var item in Model) {
+
+
+       <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+        <img src="~/uploads/@Html.DisplayFor(modelItem => item.StudentPostProfileImage)" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+        <span class="w3-right w3-opacity">32 min</span>
+        <h4>@Html.DisplayFor(modelItem => item.StudentPostProfileName)</h4><br>
+        <hr class="w3-clear">
+        <p>Have you seen this?</p>
+        <img src="~/userpost/@Html.DisplayFor(modelItem => item.StudentPostImage)" style="width:100%" class="w3-margin-bottom">
+        <p>@Html.DisplayFor(modelItem => item.StudentPostSummary)</p>
+     
+      </div>
+
+}
+    

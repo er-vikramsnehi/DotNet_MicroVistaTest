@@ -1,0 +1,50 @@
+﻿@model MicroVistaMVC.Models.StudentClass
+
+
+@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@using MicroVistaMVC.Models
+@using System.Collections.Generic
+
+
+
+<!-- Card -->
+<div class="card">
+
+    <!-- Card image -->
+    <div class="view overlay">
+        <img class="card-img-top" src="~/uploads/@HttpContextAccessor.HttpContext.Session.GetString("StudentImage")"
+             alt="@HttpContextAccessor.HttpContext.Session.GetString("StudentImage")">
+        <a href="#!">
+            <div class="mask rgba-white-slight"></div>
+        </a>
+    </div>
+
+    <!-- Card content -->
+    <div class="card-body">
+
+        <!-- Title -->
+        <h4 class="card-title">@HttpContextAccessor.HttpContext.Session.GetString("StudentName")</h4>
+        <!-- Text -->
+        <p class="card-text">
+            <i class="fas fa-address-card fa-x"></i>  :    @HttpContextAccessor.HttpContext.Session.GetString("StudentAddress")
+        </p>
+        <!-- Button -->
+
+        @using (Html.BeginForm("UploadImage", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.DisplayFor(model => model.StudentImage)
+            @Html.TextBoxFor(model => model.StudentImage, new { type = "file", @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.StudentImage)
+
+
+            <button type="submit" class="btn btn-white"> <i class="fas fa-sign-in-alt fa-x"></i>  Upload Now </button>
+
+        }
+
+
+    </div>
+
+</div>
+<!-- Card -->
+

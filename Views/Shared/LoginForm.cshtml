@@ -1,0 +1,123 @@
+﻿@model MicroVistaMVC.Models.StudentClass
+
+
+<div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header btn-outline-warning ">
+                <h5 class="modal-title btn-outline-warning " id="exampleModalToggleLabel">Registration</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                @using (Html.BeginForm("Registration", "Home", FormMethod.Post))
+                {
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+                    <div class="mb-3">
+                        <label for="StudentMail" class="form-label">Full Name </label>
+                        @Html.TextBoxFor(x => x.StudentName, new { @class = "form-control" })
+                        <br /> <span asp-validation-for="StudentName"></span>
+                        @Html.ValidationMessageFor(x => x.StudentName)
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="StudentMail" class="form-label">Date of Birth </label>
+                        <input type="date" class="form-control" name="StudentDOB" id="StudentDOB" />
+                        <br /> <span asp-validation-for="StudentDOB"></span>
+                        @Html.ValidationMessageFor(x => x.StudentDOB)
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label for="StudentMail" class="form-label">Email address</label>
+                        @Html.TextBoxFor(x => x.StudentMail, new { @class = "form-control" })
+                        <br /><span asp-validation-for="StudentMail"></span>
+                        @Html.ValidationMessageFor(x => x.StudentMail)
+                    </div>
+
+
+
+                    <div class="mb-3">
+                        <label for="StudentPassword" class="form-label">Password</label>
+                        @Html.PasswordFor(x => x.StudentPassword, new { @class = "form-control" })
+                        <br /><span asp-validation-for="StudentPassword"></span>
+                        @Html.ValidationMessageFor(x => x.StudentPassword)
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label for="StudentAddress" class="form-label">Student Address </label>
+                        @Html.TextAreaFor(x => x.StudentAddress, new { @class = "form-control" })
+                        <br /> <span asp-validation-for="StudentAddress"></span>
+                        @Html.ValidationMessageFor(x => x.StudentAddress)
+                    </div>
+
+
+                    @*<br />
+                        <span>Role</span> @Html.DropDownListFor(x => x.role, new SelectList(Enum.GetValues(typeof(UserRole))), "Select User Role")
+                        <br />*@
+
+                    @Html.ValidationSummary()
+
+                    <button type="submit" class="btn btn-white btn-outline-primary"> <i class="fas fa-sign-in-alt fa-x"></i>   Submit </button>
+
+                }
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-white btn-outline-secondary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Already have an Account? -- > </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalToggleLabel2">Login</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+
+
+
+
+
+
+
+                @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+                {
+                    <div class="mb-3">
+                        <label for="StudentMail" class="form-label">Email address</label>
+                        @Html.TextBoxFor(x => x.StudentMail, new { @class = "form-control" })
+                        <br /><span asp-validation-for="StudentMail"></span>
+                        @Html.ValidationMessageFor(x => x.StudentMail)
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="StudentPassword" class="form-label">Password</label>
+                        @Html.PasswordFor(x => x.StudentPassword, new { @class = "form-control" })
+                        <br /><span asp-validation-for="StudentPassword"></span>
+                        @Html.ValidationMessageFor(x => x.StudentPassword)
+                    </div>
+
+                    @Html.ValidationSummary()
+
+                    <button type="submit" class="btn btn-white btn-outline-primary"> <i class="fas fa-sign-in-alt fa-x"></i>  Submit </button>
+                }
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-white btn-outline-success" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">  <i class="fas fa-user-graduate fa-x"></i>   < -- Register Here. -- > </button>
+            </div>
+        </div>
+    </div>
+</div>
